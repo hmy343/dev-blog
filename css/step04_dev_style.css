@@ -1,0 +1,309 @@
+@charset "UTF-8";
+
+/*
+    0. color : 
+    1. general : 전체 적용
+    2. common : 태그별 공통 적용
+    3. header : layout에서 header
+    4. hero : class hero
+    5. about : id about
+    6. skills
+    7. who
+    8. contact
+    9. media
+*/
+
+/* 0. color */
+/* custom attr */
+:root {
+    --grey: #333;
+    --white: #fff;
+    --light-blue: #4db1ec;
+}
+
+/* 1. general */
+html {
+    font-size: 100%;
+
+    /* 스크롤이 부드럽게 되기 위함 */
+    scroll-behavior: smooth;
+}
+body {
+    /* color: #333; */
+    color: var(--grey);
+    font-family: sans-serif;
+}
+
+/* 2. common */
+p {
+    line-height: 1.5;
+}
+img {
+    max-width: 100%;
+}
+h2 {
+    font-size: 3rem;
+    margin-bottom: 1.8rem;
+}
+h1,
+h2 {
+    text-align: center;
+}
+
+header,
+h1,
+h2{
+    font-family: impact, sans-serif;
+}
+.wrapper {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* 3. header */
+header {
+    background: var(--grey);
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+
+    /* z-index : z축 위치 설정 가능 */
+    z-index: 1;
+}
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+header a {
+    font-size: 1.5rem;
+}
+.btn-menu {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 0.5rem 1rem;
+}
+.main-nav {
+    position: absolute;
+    width: 0;  /* 100이면 보임 */
+    top: 50px;
+    right: 0;
+    overflow: hidden;
+    background: var(--grey);
+    transition: 0.7s;
+}
+.main-nav li {
+    text-align: center;
+    margin: 2rem 0;
+}
+.main-nav a {
+    display: block;
+}
+.main-nav.open-menu {
+    width: 100%;
+}
+/* 4. here */
+#hero {
+    background-image: url('https://cdn.pixabay.com/photo/2014/12/30/05/42/source-code-583537_960_720.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    
+    /* clip-path : img 모양 상세 조절 */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+    
+    /* background 투명도를 위에 여러겹의 색상을 쌓아 조정 */
+    /* background-color 설정을 먼저해야 blend mode 설정됨 */
+    background-color:lightgray;
+    background-blend-mode:difference;
+
+    /* animation name, animation duration */
+    animation: bg-color 24s;
+}
+@keyframes bg-color {
+    0% { background-color: var(--light-blue); }
+    12.5% { background-color: #1665cc; }
+    25% { background-color: #b473bf; }
+    37.5% { background-color: #ffb2c1; }
+    50% { background-color: #ff9f67; }
+    62.5% { background-color: #ffd673; }
+    75% { background-color:  #a2e29b; }
+    87.5% { background-color: #00a2af; }
+    100% { background-color: var(--light-blue); }
+}
+#hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+}
+.hero-date {
+    text-align: center;
+    border-top: 3px solid var(--grey);
+    border-bottom: 3px solid var(--grey);
+    padding: 0.5rem;
+    font-size: 1.5rem;
+}
+
+/* 5. about */
+#about {
+    padding: 4rem 1rem;
+}
+#about h2 {
+    /* 그라데이션 사용 & background 색상을 글자에 적용 */
+    background: linear-gradient(#ffd673, #fc8f50);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}
+#about p {
+    margin-bottom: 2rem;
+}
+
+/* 6. skills */
+#skills {
+    background: linear-gradient(#eb5d7e, #7c539d);
+    -webkit-clip-path: polygon(0 5%, 100% 15%, 100% 85%, 0% 95%);
+    clip-path: polygon(0 5%, 100% 15%, 100% 85%, 0% 95%);
+    padding: 5rem 0;
+}
+#skills h2 {
+    color: var(--white);
+}
+.skills-table {
+    color: var(--white);
+    width: 100%;
+}
+.skills-table tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.skills-table td {
+    line-height: 1.5;
+    /* padding: 1.5rem 0; */
+    display: block;
+}
+
+/* 7. who */
+#who {
+    padding: 3rem 1rem;
+}
+.who-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    margin-bottom: 1rem;
+}
+.who-text {
+    margin-left: 1rem;
+}
+#who h2 {
+    background: linear-gradient(#64b44c, #ffd673);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#who h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+#who img {
+    border-radius: 50%;
+    width: 20%;
+}
+
+/* 8. contact */
+#contact {
+    background: linear-gradient(#67bfd5, #f7cd39);
+    padding: 6rem 1rem 2rem;
+    clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
+}
+#contact h2 {
+    color: var(--white);
+}
+.contact-form {
+    max-width: 480px;
+    margin: 0 auto 5rem;
+}
+.contact-form label {
+    color: var(--white);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.contact-field {
+    background: rgba(255, 255, 255, .6);
+    padding: 1rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+.contact-btn {
+    background: var(--grey);
+    color: var(--white);
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+.footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding-top: 2rem;
+    text-align: center;
+    font-size: .875rem;
+    color: var(--white);
+}
+
+
+/* 9. media query */
+@media (min-width: 600px) {
+    /*
+        2) common
+        3) header
+        4) hero
+        6) skills
+        7) who
+    */
+    /* 2) common */
+    h2 {
+        font-size: 5rem;
+    }
+    a:hover {
+        color:#1665cc;
+    }
+
+    /* 3) header*/
+    .btn-menu {
+        visibility: hidden;
+    }
+    .main-nav {
+        width: 100%;
+        display: flex;
+        position: static;
+    }
+    .main-nav li {
+        margin: 0 0 0 1.5rem;
+    }
+
+    /*4) hero */
+    #hero h1{
+        font-size: 6.5rem;
+    }
+
+    /* 6) skills */
+    #skills table td {
+        display: table-cell;
+    }
+
+    /* 7) who */
+    .who-list {
+        
+    }
+
+    
+}
